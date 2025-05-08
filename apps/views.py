@@ -3,7 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from apps.models import *
 from datetime import date
 from decimal import Decimal
-
+from django.db.models import Exists, OuterRef
 
 # Create your views here.
 def index(request):
@@ -150,7 +150,9 @@ def add_product(request):
 
 
 def list_product(request):
-    product_obj = Product.objects.all()
+    product_obj = Product.objects.all().annotate(
+        has_discount = Exists(Discount.objects.filter(product=OuterRef('pk')))
+    )
     return render (request, 'list_product.html', {'product':product_obj})
 
     

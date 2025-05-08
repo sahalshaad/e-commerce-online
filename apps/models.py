@@ -66,7 +66,7 @@ class SellerSignup(models.Model):
         return self.name
     
 class Discount(models.Model):
-    product = models.ForeignKey(Product, models.CASCADE)
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='discount')
     discount = models.CharField(max_length=10)
     starting_date = models.CharField(max_length=100)
     ending_date = models.CharField(max_length=100)
