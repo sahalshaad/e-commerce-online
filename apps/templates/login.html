@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .login-container {
+            background-color: #444;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 1000px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            padding: 40px;
+        }
+        .login-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .form-control {
+            background-color: transparent;
+            border: 1px solid #666;
+            border-radius: 5px;
+            padding: 12px 15px;
+            height: auto;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: #6c757d;
+            color: #fff;
+            box-shadow: none;
+        }
+        .form-control::placeholder {
+            color: #aaa;
+        }
+        .input-icon {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        .login-btn {
+            background-color: #4e73df;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            width: 150px;
+        }
+        .login-btn:hover {
+            background-color: #375dd0;
+        }
+        .checkbox-text {
+            color: #ddd;
+        }
+        .forgot-password {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .forgot-password:hover {
+            color: #4e73df;
+        }
+        .signup-link {
+            color: #4e73df;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .register-section {
+            margin-top: 30px;
+            text-align: center;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="login-title">Login</h1>
+                
+                <form action="/loginform/" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <span class="input-icon"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label checkbox-text" for="rememberMe">
+                                Remember me
+                            </label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn login-btn">LOGIN</button>
+                    
+                    <div class="register-section">
+                        <p>Don't have an account? <a href="/signupview/" class="signup-link">Sign up</a></p>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="image-container">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" alt="Login illustration">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
